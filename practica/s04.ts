@@ -32,7 +32,7 @@ import assertNever from "@/app/lib/utils/assert-never";
 
 function describir(x: unknown): string {
 
-    return `Número: ${x.toFixed(1)}`;
+
   if (typeof x === "number") return `Número: ${x.toFixed(1)}`;
   if (typeof x === "string") return `Texto de ${x.length} letras`;
   if (Array.isArray(x)) return `Lista de ${x.length} elementos`;
