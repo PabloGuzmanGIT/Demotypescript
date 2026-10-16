@@ -1,5 +1,5 @@
 // Sesión 1 – Bloque 3 (Nivel 1): estados de un pedido en la cafetería
-
+import assertNever from "@/app/lib/utils/assert-never";
 type EstadoPedido =
   | { estado: "pendiente"; creadoEn: Date }
   | { estado: "preparando"; barista: string }
@@ -7,9 +7,7 @@ type EstadoPedido =
   | { estado: "cancelado"; motivo: string }
   | { estado: "entregado"; entregoAlas : Date }
 
-function assertNever(x: never): never {
-  throw new Error(`Caso no manejado: ${JSON.stringify(x)}`);
-}
+
 
 function mensajeCliente(p: EstadoPedido): string {
   switch (p.estado) {
