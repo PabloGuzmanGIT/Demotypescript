@@ -1,31 +1,26 @@
-import { Resultado } from "@/types/resultado";
+type Resultado<T> =
+  | { ok: true; valor: T }
+  | { ok: false; error: string };
 
 
-function parsearCantidad (x:unknown): Resultado<number> {
+// function parsearCantidad (x:unknown): Resultado<number> {
 
-    switch(typeof x) {
-        case "number":
-            return {ok:true, valor:x};
-        case "string":
-            const n = Number(x);
-            if(isNaN(n)) {
-                return {ok:false, error:"No es un número"};
-            }
-            return {ok:true, valor:n};
-        default:
-            return {ok:false, error:"No es un número"};
-    }
+//     switch(typeof x) {
+//         case "number":
+//             return {ok:true, valor:x};
+//         case "string":
+//             const n = Number(x);
+//             if(isNaN(n)) {
+//                 return {ok:false, error:"No es un número"};
+//             }
+//             return {ok:true, valor:n};
+//         default:
+//             return {ok:false, error:"No es un número"};
+//     }
 
-}
+// }
 
-console.log(parsearCantidad(5)); // {ok:true, valor:5}
-console.log(parsearCantidad("10")); // {ok:true, valor:10}
-console.log(parsearCantidad("abc")); // {ok:false, error:"No es un número"} 
-console.log(parsearCantidad(2.5));        // error: Debe ser un número entero
-console.log(parsearCantidad(-2));         // error: No puede ser negativa
-console.log(parsearCantidad(null));       // error: Tipo no válido
-console.log(parsearCantidad(undefined));  // error: Tipo no válido
-console.log(parsearCantidad(""));
+
 
 function parsearCantidad2(x: unknown): Resultado<number> {
   let n: number;
@@ -59,3 +54,12 @@ function parsearCantidad2(x: unknown): Resultado<number> {
   // Subobjetivo 5: éxito
   return { ok: true, valor: n };
 }
+
+console.log(parsearCantidad(5)); // {ok:true, valor:5}
+console.log(parsearCantidad("10")); // {ok:true, valor:10}
+console.log(parsearCantidad("abc")); // {ok:false, error:"No es un número"} 
+console.log(parsearCantidad(2.5));        // error: Debe ser un número entero
+console.log(parsearCantidad(-2));         // error: No puede ser negativa
+console.log(parsearCantidad(null));       // error: Tipo no válido
+console.log(parsearCantidad(undefined));  // error: Tipo no válido
+console.log(parsearCantidad(""));

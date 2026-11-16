@@ -1,4 +1,4 @@
-import assertNever from "assert-never";
+import assertNever from '@/assert-never';
 
 type resultado = 
 |{medio:"email" ; destino: string ;asunto: string} 
